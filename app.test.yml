@@ -1,0 +1,26 @@
+runtime: nodejs16 
+# 勝手にインスタンスが変わらないようにstandardにする。
+env: standard
+
+# 無料枠
+instance_class: F1
+# GAE_SERVICEに設定される値
+service: django_test
+
+env_variables:
+  BUCKET_NAME: "example-gcs-bucket"
+  NODE_ENV: test
+  PORT: 4000
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
+# - url: /
+#   secure: always
+#   script: auto
+
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto

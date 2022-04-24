@@ -19,8 +19,12 @@ jobs:
         workload_identity_provider: 'projects/93898855020/locations/global/workloadIdentityPools/forgithubactionid/providers/githubid'
         service_account: 'compute-engine-for-github@github-for-personal-build.iam.gserviceaccount.com'
 
-    # - id: 'deploy'
-    #  uses: 'google-github-actions/deploy-appengine@v0'
+    # - id: 'production_deploy'
+    # name: 'production_deploy'
+    #   if: ${{ github.ref == 'refs/heads/main' }}
+    #   uses: 'google-github-actions/deploy-appengine@v0'
+    #   with:
+    #     deliverables: app.production.yml
 
     # Example of using the output
     # - id: 'test'

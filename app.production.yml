@@ -1,0 +1,28 @@
+runtime: python39
+# 勝手にインスタンスが変わらないようにstandardにする。
+env: standard
+
+# 無料枠
+instance_class: F1
+# GAE_SERVICEに設定される値
+# 必須でないが、管理を楽にするためgithubのブランチ名と一致させる。
+# front, backendの方が良い？
+# service名は必ずdefaultのものが一ついる。
+service: django_prod
+
+env_variables:
+  BUCKET_NAME: "example-gcs-bucket"
+  PORT: 4000
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
+# - url: /
+#   secure: always
+#   script: auto
+
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
