@@ -1,0 +1,27 @@
+name: Build and Deploy to gae
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        workload_identity_provider: 'projects/93898855020/locations/global/workloadIdentityPools/forgithubactionid/providers/githubid'
+        service_account: 'compute-engine-for-github@github-for-personal-build.iam.gserviceaccount.com'
+
+    # - id: 'deploy'
+    #  uses: 'google-github-actions/deploy-appengine@v0'
+
+    # Example of using the output
+    # - id: 'test'
+    #  run: 'curl "${{ steps.deploy.outputs.url }}"'
