@@ -10,7 +10,7 @@ service: django_test
 env_variables:
   BUCKET_NAME: "example-gcs-bucket"
   NODE_ENV: test
-  PORT: 4000
+  PORT: 80
 
 handlers:
 - url: /stylesheets

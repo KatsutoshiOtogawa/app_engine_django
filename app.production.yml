@@ -10,9 +10,11 @@ instance_class: F1
 # service名は必ずdefaultのものが一ついる。
 service: django_prod
 
+entrypoint: gunicorn config.asgi -k uvicorn.workers.UvicornWorker --config ./gunicorn-cfg.py
+
 env_variables:
   BUCKET_NAME: "example-gcs-bucket"
-  PORT: 4000
+  PORT: 80
 
 handlers:
 - url: /stylesheets

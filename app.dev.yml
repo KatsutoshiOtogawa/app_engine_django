@@ -12,7 +12,7 @@ service: django_dev
 
 env_variables:
   BUCKET_NAME: "example-gcs-bucket"
-  PORT: 4000
+  PORT: 80
 
 handlers:
 - url: /stylesheets

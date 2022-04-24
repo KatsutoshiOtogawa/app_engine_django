@@ -1,6 +1,7 @@
 .devcontainer
 .editorconfig
 .gitignore
+.keys
 Pipfile
 Pipfile.lock
 app.dev.yml

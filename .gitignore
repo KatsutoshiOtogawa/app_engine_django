@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 .env
+!/.devcontainer/.env
 .venv
 env/
 venv/
@@ -130,3 +131,6 @@ dmypy.json
 
 Pipfile.lock
 requirements.txt
+
+keys/
+!/keys/.gitignore

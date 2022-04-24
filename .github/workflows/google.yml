@@ -29,10 +29,11 @@ jobs:
     - name: main lock package create from Pipfile
         run: pipenv lock
     - name: install packages from lock file
-      run: pipenv sync --dev
+      run: pipenv sync
     
+    # pipenv sync --dev
     - name: Run Tests
-      run: pipenv run test
+      run:  run test
     - name: create requirements.txt
     # python -m pip install pipenv
       run: pip lock -r > requirements.txt

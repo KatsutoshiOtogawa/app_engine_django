@@ -8,6 +8,18 @@ ENV PYTHONUNBUFFERED 1
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+RUN apt update && apt upgrade -y
+
+RUN apt install -y libnss3-tools
+
+RUN wget https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64 \
+    && mv mkcert* mkcert \
+    && install ./mkcert /usr/bin/ \
+    && rm ./mkcert
+
+# install htpasswd for bcrypt
+RUN apt-get install apache2-utils
+
 # [Optional] If your requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
 # RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
